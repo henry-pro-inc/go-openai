@@ -18,6 +18,8 @@ type AssistantThreadRunStreamResponse struct {
 	Delta          *MessageDelta      `json:"delta,omitempty"`
 	Status         string             `json:"status"`
 	RequiredAction *RunRequiredAction `json:"required_action,omitempty"`
+	LastError      *RunLastError      `json:"last_error,omitempty"`
+	FailedAt       *int64             `json:"failed_at,omitempty"`
 }
 
 type AssistantThreadRunStream struct {
