@@ -13,9 +13,11 @@ var (
 )
 
 type AssistantThreadRunStreamResponse struct {
-	ID     string       `json:"id"`
-	Object string       `json:"object"`
-	Delta  MessageDelta `json:"delta,omitempty"`
+	ID             string             `json:"id"`
+	Object         string             `json:"object"`
+	Delta          *MessageDelta      `json:"delta,omitempty"`
+	Status         string             `json:"status"`
+	RequiredAction *RunRequiredAction `json:"required_action,omitempty"`
 }
 
 type AssistantThreadRunStream struct {
@@ -48,7 +50,7 @@ func (c *Client) CreateAssistantThreadRunStream(
 	stream = &AssistantThreadRunStream{
 		streamReader: resp,
 	}
-	return
+	return stream, nil
 }
 
 func (c *Client) CreateAssistantThreadRunToolStream(
@@ -78,5 +80,5 @@ func (c *Client) CreateAssistantThreadRunToolStream(
 	stream = &AssistantThreadRunStream{
 		streamReader: resp,
 	}
-	return
+	return stream, nil
 }
