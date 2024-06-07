@@ -138,7 +138,7 @@ type RunList struct {
 
 type SubmitToolOutputsRequest struct {
 	ToolOutputs []ToolOutput `json:"tool_outputs"`
-	Stream      bool
+	Stream      bool         `json:"stream,omitempty"`
 }
 
 type ToolOutput struct {
